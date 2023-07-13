@@ -15,7 +15,7 @@
     <!-- Asynchronously load CSS Styles -->
     <script>
       function loadCSS(url) {
-        const link = document.createElement('link');
+        const link = document.createElement("link");
         link.rel = "stylesheet";
         link.href = url;
         document.head.appendChild(link);
@@ -23,7 +23,7 @@
 
       loadCSS("{{ url_for('static', filename='dist/styles.css') }}");
     </script>
-    
+
     <!-- FontAwesome -->
     <link
       rel="stylesheet"
@@ -33,9 +33,11 @@
   <body>
     <main class="main">{% block main %} {% endblock %}</main>
 
-    <script
-      defer
-      src="{{ url_for('static', filename='js/script.js') }}"
-    ></script>
+    {% if request.path == url_for('library') %}
+      <script
+        defer
+        src="{{ url_for('static', filename='js/script.js') }}">
+      </script>
+    {% endif %}
   </body>
 </html>

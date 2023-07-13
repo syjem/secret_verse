@@ -1,12 +1,20 @@
-from flask import render_template, request, url_for, redirect, jsonify
+from flask import render_template, request, url_for, redirect, jsonify, flash, redirect, url_for 
 from datetime import datetime
 import requests
+from forms import RegistrationForm
 
 # For development
 from __init__ import app
 
 # For production
 # from api import app
+
+@app.context_processor
+def inject_current_year():
+    current_year = datetime.now().year
+    return dict(current_year=current_year)
+
+
 
 @app.route('/')
 def home():
@@ -58,7 +66,17 @@ def library():
 
     return render_template('library.html')
 
-@app.context_processor
-def inject_current_year():
-    current_year = datetime.now().year
-    return dict(current_year=current_year)
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm(request.form)
+    if request.method == 'POST' and form.validate():
+        # user = User(form.username.data, form.email.data,
+        #             form.password.data)
+        flash('Thanks for registering')
+        return redirect(url_for('login'))
+    return render_template('register.html', form=form)
+
+@app.route('/login')
+def login():
+    return "Login Page"
