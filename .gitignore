@@ -1,0 +1,11 @@
+# Environments 
+.env 
+.venv 
+env/ 
+venv/ 
+
+.vercel
+*.log
+*.pyc
+*.cpython
+__pycache__/

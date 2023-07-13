@@ -1,0 +1,19 @@
+@use "_fonts";
+
+:root {
+  --max-width: 90rem;
+  --min-width: 20rem;
+
+  --clr-text-light: hsl(0, 0%, 100%);
+  --clr-text: hsl(222, 47%, 11%);
+  --clr-accent: hsl(338, 100%, 56%);
+  --clr-text-secondary: hsl(0, 7%, 75%);
+
+  --background-gradient: linear-gradient(
+    90deg,
+    hsl(335, 86%, 95%),
+    hsl(210, 85%, 95%)
+  );
+
+  // --clr-bg: hsl(256, 58%, 4%);
+}

@@ -1,0 +1,59 @@
+@use '_fonts';
+
+// Fonts Mixin:
+@mixin font-bold {
+    font-family: 'Roboto-Bold', sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@mixin font-regular {
+    font-family: 'Roboto-Regular', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@mixin font-lighter {
+    font-family: 'Roboto-Light', sans-serif;
+    font-weight: lighter;
+    font-style: normal;
+    font-display: swap;
+}
+
+// Flexbox Mixin:
+@mixin flex($direction: row, $justify-content: center, $align-items: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+// Grid Mixin:
+@mixin grid($columns: 12, $gap: 1rem) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    gap: $gap;
+}
+
+// Responsive Media Query Mixin:
+@mixin media-query($breakpoint) {
+    @media screen and (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+// Vendor Prefix Mixin:
+@mixin vendor-prefix($property, $value) {
+    -webkit-#{$property}: $value;
+    -moz-#{$property}: $value;
+    #{$property}: $value;
+} 
+
+// Placeholder Text Color Mixin:
+@mixin placeholder-color($color) {
+    &::placeholder {
+        color: $color;
+    }
+}

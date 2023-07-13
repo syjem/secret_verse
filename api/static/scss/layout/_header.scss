@@ -1,0 +1,131 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/functions" as *;
+
+.library-header {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 1rem;
+  right: 1rem;
+  z-index: 11;
+  padding-top: 0.5rem;
+  background: var(--background-gradient);
+  @include flex(row, space-between, center);
+
+  @include media-query(rem(501px)) {
+    & {
+      margin-inline: auto;
+      left: 2rem;
+      right: 2rem;
+      grid-column: 1 / -1;
+      min-width: var(--min-width);
+      max-width: var(--max-width);
+    }
+  }
+
+  @include media-query(rem(768px)) {
+    & {
+      left: 4rem;
+      right: 4rem;
+    }
+  }
+
+  .nav-left {
+    gap: 1rem;
+    flex: 1;
+    @include flex(row, flex-start, center);
+
+    h1 {
+      @include font-bold;
+      font-size: clamp(1.1rem, 2.5vw, 2rem);
+      @include flex(row, flex-start, center);
+
+      span {
+        color: var(--clr-accent);
+        font-family: "Roboto-Bold", sans-serif;
+
+        em {
+          color: var(--clr-text);
+        }
+      }
+    }
+  }
+
+  .search-bar {
+    display: none;
+    flex: 2;
+    width: 100%;
+
+    .search-bar-wrapper {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 15px;
+      @include flex(row, center, center);
+      outline: 1px solid var(--clr-text);
+
+      &:focus-within {
+        outline: 2px solid var(--clr-accent);
+      }
+
+      i {
+        font-size: clamp(0.9rem, 1.1vw, 1rem);
+        color: var(--clr-text);
+        border-top-left-radius: 15px;
+        background-color: transparent;
+        border-bottom-left-radius: 15px;
+        padding: 0.5rem 0.8rem 0.5rem 1rem;
+      }
+
+      input {
+        outline: 0;
+        width: 100%;
+        border: none;
+        padding: 0.5rem 0;
+        background-color: transparent;
+        border-top-right-radius: 15px;
+        color: var(--clr-text);
+        border-bottom-right-radius: 15px;
+      }
+    }
+  }
+
+  .profile-section {
+    color: var(--clr-text);
+    flex: 1;
+    gap: 1rem;
+    @include flex(row, flex-end, center);
+
+    i {
+      font-size: clamp(0.9rem, 1.1vw, 1rem);
+    }
+
+    img {
+      display: block;
+      cursor: pointer;
+      width: 2.188rem;
+      height: 2.188rem;
+      border-radius: 50%;
+    }
+  }
+}
+
+@include media-query(rem(501px)) {
+  .search-bar {
+    flex: 2;
+    width: 100%;
+    @include flex(row, center, center);
+    display: flex !important;
+  }
+
+  .profile-section {
+    gap: 1rem;
+
+    i {
+      font-size: clamp(0.9rem, 1.1vw, 1rem);
+    }
+
+    #search-icon {
+      display: none;
+    }
+  }
+}

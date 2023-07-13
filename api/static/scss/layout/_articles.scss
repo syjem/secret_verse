@@ -1,0 +1,128 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/functions" as *;
+
+.article {
+  margin-left: 0;
+  margin-top: 60px;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--clr-text);
+    font-size: clamp(1.3rem, 3.5vw, 2rem);
+  }
+
+  .article-grid {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9.25rem, 1fr));
+    grid-template-rows: auto;
+    justify-content: center;
+
+    div.featured-lg-novels {
+      position: relative;
+      grid-column: 1 / -1;
+
+      .novels-book-cover {
+        display: block;
+        height: 100%;
+
+        img {
+          height: 100%;
+        }
+      }
+
+      .novel-info {
+        gap: 0.5rem;
+        display: flex;
+        bottom: 10px;
+        position: absolute;
+        flex-direction: column;
+        padding: 0.5rem 1rem;
+
+        .author,
+        .title {
+          @include font-bold;
+          color: var(--clr-text-light);
+          text-shadow: 1px 1px 1px var(--clr-text);
+        }
+
+        .author {
+          font-size: clamp(0.7rem, 2.3vw, 1.2rem);
+        }
+
+        .title {
+          font-size: clamp(1rem, 2.7vw, 1.7rem);
+        }
+
+        .btn {
+          border: none;
+          color: var(--clr-text-light);
+          padding: 0.5rem 0;
+          cursor: pointer;
+          @include font-bold;
+          font-size: clamp(0.8rem, 2vw, 1rem);
+          background-color: var(--clr-accent);
+        }
+
+        .btn-read {
+          max-width: 70%;
+        }
+      }
+    }
+
+    .book-card {
+      @include flex(column, flex-start, flex-start);
+
+      .sm-novels-book-cover {
+        max-width: 100%;
+
+        img {
+          min-height: 220px;
+        }
+      }
+
+      .novel-sm-info {
+        width: 100%;
+        text-align: center;
+
+        h5,
+        h6 {
+          @include font-regular;
+          margin-top: 0.5rem;
+        }
+
+        h5 {
+          color: var(--clr-accent);
+          font-size: clamp(1rem, 2.3vw, 1.5rem);
+        }
+
+        h6 {
+          color: var(--clr-text);
+          font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+      }
+    }
+  }
+}
+@include media-query(rem(501px)) {
+  .article {
+    margin-left: rem(50px);
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+
+    .article-grid {
+      div.featured-lg-novels {
+        grid-column: 1 / 4;
+      }
+    }
+  }
+}
+
+@include media-query(rem(768px)) {
+  .article {
+    margin-top: 80px;
+    grid-column: 2 / -1;
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+
+    <link
+      type="image/png"
+      sizes="16x16"
+      rel="icon"
+      href="{{ url_for('static', filename='images/icons8-book-16.png') }}"
+    />
+
+    <!-- Asynchronously load CSS Styles -->
+    <script>
+      function loadCSS(url) {
+        const link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = url;
+        document.head.appendChild(link);
+      }
+
+      loadCSS("{{ url_for('static', filename='dist/styles.css') }}");
+    </script>
+    
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='fontawesome/fa-css/all.css') }}"
+    />
+  </head>
+  <body>
+    <main class="main">{% block main %} {% endblock %}</main>
+
+    <script
+      defer
+      src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+  </body>
+</html>

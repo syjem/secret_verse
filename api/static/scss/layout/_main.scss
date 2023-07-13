@@ -1,0 +1,47 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/functions" as *;
+
+body {
+  background: var(--background-gradient);
+  @include font-bold;
+
+  &::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--clr-text);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--clr-accent);
+  }
+}
+
+.main {
+  max-width: var(--max-width);
+  margin-inline: auto;
+
+  .container {
+    padding: 1rem;
+    display: block;
+    gap: 1rem;
+    min-width: var(--min-width);
+    max-width: var(--max-width);
+  }
+
+  @include media-query(rem(501px)) {
+    .container {
+      padding: 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: repeat(12, 1fr);
+    }
+  }
+
+  @include media-query(rem(768px)) {
+    .container {
+      padding: 2rem 4rem;
+    }
+  }
+}
