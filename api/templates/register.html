@@ -1,16 +1,77 @@
-{% extends 'layout.html' %}
-{% block title %} Register - Secret Verse {% endblock %}
-{% block main %}
+{% extends 'helpers/main_helper.html' %} {% block title %} Register - Secret
+Verse {% endblock %} {% block content %}
+<main class="main">
+  <form action="" method="post">
+    {{ form.hidden_tag() }}
+    <fieldset>
 
-{% from "helpers/_form_helpers.html" import render_field %}
-<form method=post>
-  <dl>
-    {{ render_field(form.username) }}
-    {{ render_field(form.email) }}
-    {{ render_field(form.password) }}
-    {{ render_field(form.confirm) }}
-    {{ render_field(form.accept_tos) }}
-  </dl>
-  <input type=submit value="Register">
-</form>
-{% endblock %}
+      <div class="form-group">
+        {{ form.username.label }} 
+        
+        {% if form.username.errors %}
+          {{ form.username(placeholder="Username", autocomplete="off", autofocus=True, class='is-invalid') }}
+            <div class="invalid-feedback">
+              {% for error in form.username.errors %}
+                <em>* {{ error }}</em>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.username(placeholder="Username", autocomplete="off", autofocus=True) }}
+          {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.email.label }} 
+
+        {% if form.email.errors %}
+          <div class="invalid-feedback">
+            {% for error in form.email.errors %}
+              <em>* {{ error }}</em>
+            {% endfor %}
+          </div>
+          {{ form.email(placeholder="Email", autocomplete="off", class='is-invalid') }}
+        {% else %}
+          {{ form.email(placeholder="Email", autocomplete="off") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.password.label }} 
+
+        {% if form.password.errors %}
+          <div class="invalid-feedback">
+            {% for error in form.password.errors %}
+              <em>* {{ error }}</em>
+            {% endfor %}
+          </div>
+          {{ form.password(placeholder="Password", autocomplete="off", class='is-invalid') }}
+        {% else %}
+          {{ form.password(placeholder="Password", autocomplete="off") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.confirm_password.label }} 
+        
+        {% if form.confirm_password.errors %}
+          <div class="invalid-feedback">
+            {% for error in form.confirm_password.errors %}
+              <em>* {{ error }}</em>
+            {% endfor %}
+          </div>
+          {{ form.confirm_password(placeholder="Confirm Password", autocomplete="off", class='is-invalid') }}
+        {% else %}
+          {{ form.confirm_password(placeholder="Confirm Password", autocomplete="off") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">{{ form.submit }}</div>
+    </form>
+    <div class="account-check">
+      <small>
+        Already have an account? <a href="{{ url_for('login') }}">Sign In</a>
+      </small>
+    </div>
+  </fieldset>
+</main>
+{% endblock content %}

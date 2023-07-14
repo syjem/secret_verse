@@ -31,7 +31,20 @@
     />
   </head>
   <body>
-    <main class="main">{% block main %} {% endblock %}</main>
+
+    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %} -->
+
+    <main class="main">
+      {% block main %} {% endblock %}
+    </main>
 
     {% if request.path == url_for('library') %}
       <script
@@ -39,5 +52,6 @@
         src="{{ url_for('static', filename='js/script.js') }}">
       </script>
     {% endif %}
+
   </body>
 </html>

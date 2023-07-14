@@ -665,6 +665,7 @@ body::-webkit-scrollbar-thumb {
 }
 .article .article-grid div.featured-lg-novels .novels-book-cover img {
   height: 100%;
+  box-shadow: 2px 2px 5px var(--clr-accent);
 }
 .article .article-grid div.featured-lg-novels .novel-info {
   gap: 0.5rem;
@@ -715,6 +716,7 @@ body::-webkit-scrollbar-thumb {
 }
 .article .article-grid .book-card .sm-novels-book-cover img {
   min-height: 220px;
+  box-shadow: 2px 2px 5px var(--clr-text);
 }
 .article .article-grid .book-card .novel-sm-info {
   width: 100%;

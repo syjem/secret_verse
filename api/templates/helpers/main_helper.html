@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="image/png"
+      sizes="16x16"
+      rel="icon"
+      href="../static/images/icons8-book-16.png"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='fontawesome/fa-css/all.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dist/home.css') }}"
+    />
+    
+    {% if request.path == url_for('home') %}
+    <script
+      defer
+      src="{{  url_for('static', filename='js/homepage.js')  }}"
+    ></script>
+    {% endif %}
+
+    <script
+      defer
+      src="{{  url_for('static', filename='js/header.js')  }}"
+    ></script>
+
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <div class="logo-container">
+          <a href="/">
+            <span>Secret<em>Verse</em></span>
+          </a>
+        </div>
+        <button type="button" class="toggle-menu" title="Toggle Menu">
+          <span class="bar first-bar"></span>
+          <span class="bar second-bar"></span>
+          <span class="bar third-bar"></span>
+        </button>
+        <ul class="nav-menu">
+          <li class="nav-list">
+            <a
+              href="{{ url_for('home') }}"
+              class="nav-link {% if request.path == url_for('home') %}active{% endif %}"
+              >Home</a
+            >
+          </li>
+          <li class="nav-list">
+            <a
+              href="{{ url_for('library') }}"
+              class="nav-link {% if request.path == url_for('library') %}active{% endif %}"
+              >Library</a
+            >
+          </li>
+          <li class="nav-list">
+            <a href="{{ url_for('login') }}" class="btn btn-sign-up">Sign In</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    {% block content %}{% endblock %}
+  </body>
+</html>

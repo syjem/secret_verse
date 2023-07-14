@@ -26,9 +26,10 @@
       .novels-book-cover {
         display: block;
         height: 100%;
-
+        
         img {
           height: 100%;
+          box-shadow: 2px 2px 5px var(--clr-accent);
         }
       }
 
@@ -79,6 +80,7 @@
 
         img {
           min-height: 220px;
+          box-shadow: 2px 2px 5px var(--clr-text);
         }
       }
 

@@ -1,7 +1,7 @@
 from flask import render_template, request, url_for, redirect, jsonify, flash, redirect, url_for 
 from datetime import datetime
 import requests
-from forms import RegistrationForm
+from forms import RegistrationForm, LoginForm
 
 # For development
 from __init__ import app
@@ -69,14 +69,19 @@ def library():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate():
-        # user = User(form.username.data, form.email.data,
-        #             form.password.data)
-        flash('Thanks for registering')
-        return redirect(url_for('login'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash('Registered Successfully!', 'success')
+        return redirect(url_for('library'))
     return render_template('register.html', form=form)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return "Login Page"
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == 'syjem143@gmail.com' and form.password.data == 'sy_jem_143':
+            flash('Logged in successfully!', 'success')
+            return redirect(url_for('library'))
+        else:
+            flash('Login unsuccessful!', 'danger')
+    return render_template('login.html', form=form)

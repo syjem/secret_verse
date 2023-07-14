@@ -1,198 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      type="image/png"
-      sizes="16x16"
-      rel="icon"
-      href="../static/images/icons8-book-16.png"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='fontawesome/fa-css/all.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='dist/home.css') }}"
-    />
-    <script
-      defer
-      src="{{  url_for('static', filename='js/homepage.js')  }}"
-    ></script>
+{% extends 'helpers/main_helper.html' %} {% block title %} Secret Verse {%
+endblock %} {% block content %}
+<main class="main">
+  <section class="hero-section">
+    <div class="hero-section-intro">
+      <p class="project-title">Premier Stories Library</p>
+      <h1>
+        <span>Discover</span> and <span>Share</span> your outstanding,
+        world-class stories
+      </h1>
+      <p>
+        Immerse yourself in over 1000+ exceptional narratives, filled with
+        captivating tales and timeless classics carefully chosen for their
+        outstanding quality and world-class storytelling.
+      </p>
 
-    <title>Secret Verse</title>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="nav">
-        <div class="logo-container">
-          <a href="/">
-            <span>Secret<em>Verse</em></span>
-          </a>
-        </div>
-        <button type="button" class="toggle-menu" title="Toggle Menu">
-          <span class="bar first-bar"></span>
-          <span class="bar second-bar"></span>
-          <span class="bar third-bar"></span>
-        </button>
-        <ul class="nav-menu">
-          <li class="nav-list">
-            <a
-              href="{{ url_for('home') }}"
-              class="nav-link {% if request.path == url_for('home') %}active{% endif %}"
-              >Home</a
-            >
-          </li>
-          <li class="nav-list">
-            <a
-              href="{{ url_for('library') }}"
-              class="nav-link {% if request.path == url_for('library') %}active{% endif %}"
-              >Library</a
-            >
-          </li>
-          <li class="nav-list">
-            <a href="#" class="btn btn-sign-up">Sign In</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main class="main">
-      <section class="hero-section">
-        <div class="hero-section-intro">
-          <p class="project-title">Premier Stories Library</p>
-          <h1>
-            <span>Discover</span> and <span>Share</span> your outstanding,
-            world-class stories
-          </h1>
-          <p>
-            Immerse yourself in over 1000+ exceptional narratives, filled with
-            captivating tales and timeless classics carefully chosen for their
-            outstanding quality and world-class storytelling.
-          </p>
-
-          <a href="#about" class="btn btn-learn-more">Learn More</a>
-        </div>
-        <div class="image-section">
-          <img
-            src="../static/images/book-series-modified.png"
-            alt="Book Series"
-          />
-        </div>
-      </section>
-      <section id="about" class="about-section">
-        <div class="image-wrapper">
-          <img
-            src="../static/images/pexels-1.jpg"
-            alt="A woman working on a Laptop"
-          />
-        </div>
-        <div class="about-info">
-          <h2><span>About</span> <em>Us</em></h2>
-          <p>
-            Welcome to <span>Secret<em class="black">Verse!</em></span> We are
-            dedicated to cultivating a vibrant community of storytellers and
-            avid story enthusiasts. At
-            <span>Secret<em class="black">Verse</em></span
-            >, we deeply understand and appreciate the transformative power of
-            captivating narratives, enduring masterpieces, and limitless
-            inspiration.
-          </p>
-          <p>
-            Our purpose is to provide a platform that empowers individuals to
-            curate their personal havens for storytelling, where they can
-            immerse themselves in extraordinary tales meticulously selected for
-            their exceptional quality and world-class storytelling.
-          </p>
-          <p>
-            With an extensive collection of over 1000 handpicked stories, our
-            carefully curated assortment offers a rich diversity of spellbinding
-            narratives to ignite your imagination. Embark on this exhilarating
-            voyage of exploration, creativity, and the sheer delight of
-            storytelling with us.
-          </p>
-        </div>
-      </section>
-      <section class="why-section" id="why-our-app">
-        <div class="why-section-intro">
-          <h2>
-            What's different about
-            <span>Secret<em class="black">Verse?</em></span>
-          </h2>
-          <img src="../static/images/pexels-2.jpg" alt="Woman on the couch" />
-          <p>
-            <span>Secret<em class="black">Verse</em></span> stands out as a
-            beacon of literary excellence and personalized reading experiences.
-            We understand the unique needs and desires of avid readers, and we
-            have meticulously crafted this app to fulfill those needs in a way
-            that no other platform can.
-          </p>
-        </div>
-        <div class="why-section-col"></div>
-      </section>
-      <section class="FAQ" id="faq">
-        <h2><span>Frequently</span> <em>Asked Questions</em></h2>
-        <p>Answers to some questions you might have.</p>
-        <div class="accordion-section"></div>
-      </section>
-    </main>
-    <footer class="footer">
-      <div class="footer-contents-container">
-        <div class="footer-contents first">
-          <h3>
-            <a href="/">
-              <span>Secret<em>Verse</em></span>
-            </a>
-          </h3>
-          <div class="social">
-            <a href="" title="Facebook">
-              <i class="fa-brands fa-square-facebook"></i>
-            </a>
-            <a href="" title="Twitter">
-              <i class="fa-brands fa-twitter"></i>
-            </a>
-            <a href="" title="Youtube">
-              <i class="fa-brands fa-youtube"></i>
-            </a>
-            <a href="" title="Linked-in">
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a href="" title="Github">
-              <i class="fa-brands fa-github"></i>
-            </a>
-          </div>
-        </div>
-        <div class="footer-contents third">
-          <div class="newsletter">
-            <form>
-              <div class="error-handle">
-                <label for="email">Email Address</label>
-                <p>
-                  <em class="error">{{ error_message }}</em>
-                </p>
-              </div>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="example123@gmail.com"
-                autocomplete="off"
-              />
-              <input type="submit" value="Subscribe to Newsletter" />
-            </form>
-            <em class="copyright"
-              >&copy; Copyright {{ current_year }}. All Rights Reserved.</em
-            >
-          </div>
-        </div>
-        <div class="success-alert">
-          <p class="success">
-            <strong>Success! Thanks for subscribing.</strong>
-          </p>
-          <span class="close-btn">&times;</span>
-        </div>
+      <a href="#about" class="btn btn-learn-more">Learn More</a>
+    </div>
+    <div class="image-section">
+      <img src="../static/images/book-series-modified.png" alt="Book Series" />
+    </div>
+  </section>
+  <section id="about" class="about-section">
+    <div class="image-wrapper">
+      <img
+        src="../static/images/pexels-1.jpg"
+        alt="A woman working on a Laptop"
+      />
+    </div>
+    <div class="about-info">
+      <h2><span>About</span> <em>Us</em></h2>
+      <p>
+        Welcome to <span>Secret<em class="black">Verse!</em></span> We are
+        dedicated to cultivating a vibrant community of storytellers and avid
+        story enthusiasts. At <span>Secret<em class="black">Verse</em></span
+        >, we deeply understand and appreciate the transformative power of
+        captivating narratives, enduring masterpieces, and limitless
+        inspiration.
+      </p>
+      <p>
+        Our purpose is to provide a platform that empowers individuals to curate
+        their personal havens for storytelling, where they can immerse
+        themselves in extraordinary tales meticulously selected for their
+        exceptional quality and world-class storytelling.
+      </p>
+      <p>
+        With an extensive collection of over 1000 handpicked stories, our
+        carefully curated assortment offers a rich diversity of spellbinding
+        narratives to ignite your imagination. Embark on this exhilarating
+        voyage of exploration, creativity, and the sheer delight of storytelling
+        with us.
+      </p>
+    </div>
+  </section>
+  <section class="why-section" id="why-our-app">
+    <div class="why-section-intro">
+      <h2>
+        What's different about
+        <span>Secret<em class="black">Verse?</em></span>
+      </h2>
+      <img src="../static/images/pexels-2.jpg" alt="Woman on the couch" />
+      <p>
+        <span>Secret<em class="black">Verse</em></span> stands out as a beacon
+        of literary excellence and personalized reading experiences. We
+        understand the unique needs and desires of avid readers, and we have
+        meticulously crafted this app to fulfill those needs in a way that no
+        other platform can.
+      </p>
+    </div>
+    <div class="why-section-col"></div>
+  </section>
+  <section class="FAQ" id="faq">
+    <h2><span>Frequently</span> <em>Asked Questions</em></h2>
+    <p>Answers to some questions you might have.</p>
+    <div class="accordion-section"></div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer-contents-container">
+    <div class="footer-contents first">
+      <h3>
+        <a href="/">
+          <span>Secret<em>Verse</em></span>
+        </a>
+      </h3>
+      <div class="social">
+        <a href="" title="Facebook">
+          <i class="fa-brands fa-square-facebook"></i>
+        </a>
+        <a href="" title="Twitter">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+        <a href="" title="Youtube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="" title="Linked-in">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="" title="Github">
+          <i class="fa-brands fa-github"></i>
+        </a>
       </div>
-    </footer>
-  </body>
-</html>
+    </div>
+    <div class="footer-contents third">
+      <div class="newsletter">
+        <form>
+          <div class="error-handle">
+            <label for="email">Email Address</label>
+            <p>
+              <em class="error">{{ error_message }}</em>
+            </p>
+          </div>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="example123@gmail.com"
+            autocomplete="off"
+          />
+          <input type="submit" value="Subscribe to Newsletter" />
+        </form>
+        <em class="copyright"
+          >&copy; Copyright {{ current_year }}. All Rights Reserved.</em
+        >
+      </div>
+    </div>
+    <div class="success-alert">
+      <p class="success">
+        <strong>Success! Thanks for subscribing.</strong>
+      </p>
+      <span class="close-btn">&times;</span>
+    </div>
+  </div>
+</footer>
+{% endblock content %}
