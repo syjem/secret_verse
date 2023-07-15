@@ -1,14 +1,9 @@
 from flask import Flask
-from config import DevelopmentConfig
 
-# For production
-# from api import routes
-# from api.config import Config
-# app.config.from_object(Config)
+from api.config import Config
 
 app = Flask(__name__)
-app.config.from_object(DevelopmentConfig)
+app.config.from_object(Config)
 
 
-# For development
-from routes import *
+from api import routes

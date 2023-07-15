@@ -1,13 +1,9 @@
 from flask import render_template, request, url_for, redirect, jsonify, flash, redirect, url_for 
 from datetime import datetime
 import requests
-from forms import RegistrationForm, LoginForm
 
-# For development
-from __init__ import app
-
-# For production
-# from api import app
+from api import app
+from api.forms import RegistrationForm, LoginForm
 
 @app.context_processor
 def inject_current_year():

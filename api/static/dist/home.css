@@ -841,10 +841,15 @@ fieldset .account-check {
 .form-group input {
   width: 100%;
   padding: 0.5rem;
+  outline: none;
+  border: 1px solid hsl(0, 0%, 64%);
+  border-radius: 2px;
+  background-color: #f0f9ff;
 }
 
 .form-group input.is-invalid {
   border: 1px solid hsl(0, 77%, 52%);
+  outline: 3px solid hsl(0, 81%, 70%);
   color: hsl(0, 77%, 52%);
 }
 
@@ -861,7 +866,9 @@ fieldset .account-check {
 }
 
 .form-group input:focus {
-  outline-color: var(--clr-accent);
+  border-color: hsl(226, 71%, 40%);
+  outline: 3px solid hsl(213, 94%, 68%);
+  color: var(--clr-text-dark);
 }
 
 .form-group input[type='submit'] {
