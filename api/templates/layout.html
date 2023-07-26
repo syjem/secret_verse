@@ -1,57 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% endblock %}</title>
 
-    <link
-      type="image/png"
-      sizes="16x16"
-      rel="icon"
-      href="{{ url_for('static', filename='images/icons8-book-16.png') }}"
-    />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}{% endblock %}</title>
 
-    <!-- Asynchronously load CSS Styles -->
-    <script>
-      function loadCSS(url) {
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = url;
-        document.head.appendChild(link);
-      }
+        <link type="image/png" sizes="16x16" rel="icon" href="{{ url_for('static', filename='images/icons8-book-16.png') }}" />
 
-      loadCSS("{{ url_for('static', filename='dist/styles.css') }}");
-    </script>
+        <!-- Asynchronously load CSS Styles -->
+        <script>
+            function loadCSS(url) {
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = url;
+                document.head.appendChild(link);
+            }
 
-    <!-- FontAwesome -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='fontawesome/fa-css/all.css') }}"
-    />
-  </head>
-  <body>
+            loadCSS("{{ url_for('static', filename='dist/styles.css') }}");
+        </script>
 
-    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert alert-{{ category }}">
-            {{ message }}
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %} -->
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/fa-css/all.css') }}" />
+    </head>
 
-    <main class="main">
-      {% block main %} {% endblock %}
-    </main>
+    <body>
 
-    {% if request.path == url_for('library') %}
-      <script
-        defer
-        src="{{ url_for('static', filename='js/script.js') }}">
-      </script>
-    {% endif %}
+        <main class="main">
+            {% block main %} {% endblock %}
+        </main>
 
-  </body>
+        <script defer src="{{ url_for('static', filename='js/library-header.js') }}"></script>
+
+        {% if request.path == url_for('library') or request.path == url_for("upload_story") or request.path == url_for("secrets_feed") or request.path == url_for("my_collections") or request.path == url_for('user')%}
+        <script type="module" defer src="{{ url_for('static', filename='js/index.js') }}"></script>
+        {% endif %}
+
+        {% if request.path == url_for('library') %}
+        <script defer src="{{ url_for('static', filename='js/script.js') }}">
+        </script>
+        {% endif %}
+
+        {% if request.path == url_for('upload_story') %}
+        <script defer src="{{ url_for('static', filename='js/sign-in.js') }}">
+        </script>
+        {% endif %}
+
+        {% if request.path == url_for('user') %}
+        <script defer src="{{ url_for('static', filename='js/sign-in.js') }}">
+        </script>
+        <script type="module" defer src="{{ url_for('static', filename='js/user-edit.js') }}">
+        </script>
+        {% endif %}
+
+    </body>
+
 </html>

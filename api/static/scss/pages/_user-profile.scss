@@ -1,0 +1,297 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/functions" as *;
+
+.profile-container {
+  gap: 1rem;
+  padding: 1rem;
+  @include flex(column, flex-start, center);
+  gap: 1rem;
+  margin: 80px 0;
+  position: relative;
+
+  @include media-query(rem(501px)) {
+    padding: 1rem 2rem;
+
+    .sidebar {
+      display: none;
+    }
+  }
+
+  @include media-query(rem(768px)) {
+    padding: 1rem 5rem;
+
+    & .sidebar {
+      left: 5rem;
+    }
+  }
+
+  .alert-container {
+    width: 100%;
+    max-width: 80%;
+
+    .alert {
+      @include font-bold;
+      font-size: clamp(0.8rem, 1.5vw, 1rem);
+      padding: 0.8rem 1rem;
+      line-height: 24px;
+      border-radius: 5px;
+      margin-inline: auto;
+      position: relative;
+      transition: opacity 0.3s ease;
+
+      &-info {
+        color: rgb(102, 77, 3);
+        background-color: rgb(207, 244, 252);
+        border: 1px solid hsl(191, 74%, 77%);
+      }
+
+      .btn-close {
+        border: none;
+        font-size: 25px;
+        position: absolute;
+        top: 0.5rem;
+        color: inherit;
+        right: 0.5rem;
+        cursor: pointer;
+        background-color: transparent;
+      }
+
+      .fade {
+        opacity: 0;
+      }
+
+      .show {
+          opacity: 1;
+      }
+    }
+  }
+
+
+  .profile-image-container {
+    width: 100%;
+    max-width: 100px;
+    height: 100px;
+    cursor: pointer;
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .profile-update {
+    @include flex(column, flex-start, stretch);
+    gap: 1rem;
+    width: 100%;
+
+    @include media-query(1025px) {
+      & {
+        @include flex(row, stretch, flex-start);
+      }
+    }
+
+    .profile-nav {
+      width: 100%;
+
+      @include media-query(1025px) {
+        & {
+          width: 100%;
+          max-width: 250px !important;
+        }
+      }
+
+      .profile-nav-menu {
+        padding: 0;
+
+        .profile-nav-list-item {
+          padding: 1rem;
+          margin-bottom: 0.5rem;
+          border-radius: 5px;
+          cursor: pointer;
+
+          &.active {
+            background-color: #b5b5b5;
+
+            &:hover {
+              background-color: #b5b5b5 !important;
+            }
+          }
+
+          &:hover {
+            background-color: #dbd7d7;
+          }
+
+          i,
+          a {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+          }
+
+          i {
+            margin-right: 0.5rem;
+          }
+
+          a {
+            @include font-regular;
+          }
+        }
+      }
+    }
+
+    .profile-settings {
+      @include flex(column, flex-start, stretch);
+      width: 100%;
+      padding: 0;
+      border-radius: 5px;
+
+      h3 {
+          background-color: #b5b5b5;
+          padding: 2rem 1rem;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+      }
+
+      fieldset {
+        background-color: #b5b5b5;
+        display: block;
+        padding: 0 1rem;
+        margin: 0 auto;
+        position: relative;
+        border: none;
+        padding-bottom: 2rem;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+
+      .form-group {
+        margin-top: 1rem;
+        position: relative;
+        display: block;
+        width: 100%;
+        max-width: 500px;
+
+        label {
+          display: inline-block;
+          margin-bottom: 0.3rem;
+          @include font-regular;
+        }
+
+        input {
+          width: 100%;
+          padding: 0.5rem;
+          outline: none;
+          border: 1px solid hsl(0, 0%, 64%);
+          border-radius: 5px;
+          background-color: #f0f9ff;
+
+          &.is-invalid {
+            border: 1px solid hsl(0, 77%, 52%);
+            outline: 3px solid hsl(0, 81%, 70%);
+            color: hsl(0, 77%, 52%);
+          }
+        }
+
+        .invalid-feedback {
+          margin-top: 0.3rem;
+          display: inline-block;
+
+          em {
+            color: hsl(0, 77%, 52%);
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+          }
+        }
+
+        input:focus {
+          border-color: hsl(226, 71%, 40%);
+          outline: 3px solid hsl(213, 94%, 68%);
+          color: var(--clr-text-dark);
+        }
+
+        input[type="submit"] {
+          @include font-bold;
+          border-radius: 5px;
+          border: 3px solid var(--clr-accent);
+          text-transform: uppercase;
+          background-color: var(--clr-accent);
+          color: var(--clr-text-light);
+          width: 100%;
+          display: block;
+          margin-inline-start: auto;
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          @include media-query(420px) {
+            & {
+              max-width: 150px;
+            }
+          }
+        }
+
+        .form-file-label {
+          margin-top: 1rem;
+        }
+
+        .form-file {
+          background-color: transparent;
+          border: none;
+          font-size: 0.9rem;
+        }
+      }
+
+      .danger-zone {
+        @include flex(column, flex-start, flex-start);
+        gap: 1rem;
+        margin-top: 2rem;
+        background-color: #b5b5b5;
+        padding: 2rem 1rem;
+        border-radius: 5px;
+
+        h3 {
+            font-style: italic;
+            border-top-left-radius: 5px;
+            padding: 0;
+            background-color: inherit;
+        }
+
+        p {
+            @include font-regular;
+        }
+
+        .danger-button {
+            display: block;
+            border: 1px solid #071952;
+            padding: 0.6rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            opacity: 0.6;
+
+            &:active {
+                transition: unset;
+                transform: scale(0.98);
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+
+            i {
+                transition: 0.3s ease-in-out;
+                margin-right: 0.3rem;
+            }
+
+            span {
+                @include font-regular;
+            }
+        }
+      }
+    }
+  }
+}

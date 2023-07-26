@@ -1,0 +1,14 @@
+
+<div class="stories-feed">
+    {% for data in data  %}
+    <div class="story-info">
+        <img src="{{ url_for('static', filename='images/' + data['profile']) }}" title="{{ data['username'] }}" alt='Profile Picture'>
+        <a href="#" title="{{ data['username'] }}">{{ data['username'] }}</a>
+        <small>{{ data['story'].date_posted.strftime('%Y:%m:%d') }}</small>
+    </div>
+    <div class="cover-title">
+        <img src="{{ url_for('static', filename='images/story_covers/' + data['story'].cover) }}" alt="Story {{ data['story'].id }}">
+        <h4 title="'{{ data['story'].title }}', read now."><a href="#">{{ data['story'].title }}</a></h4>
+    </div>
+    {% endfor%}
+</div>

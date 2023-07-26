@@ -1,26 +1,37 @@
 <header class="library-header">
-  <div class="nav-left">
-    <h1 class="sidebar-h1">
-      <a href="/"><span>Secret<em>Verse</em></span></a>
-    </h1>
-  </div>
+    <div class="nav-left">
+        <h1 class="sidebar-h1">
+            <a href="{{ url_for('library') }}"><span>Secret<em>Verse</em></span></a>
+        </h1>
+    </div>
 
-  <div class="search-bar">
-    <form action="" method="post" class="search-bar-wrapper">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input
-        type="search"
-        name="search"
-        id="search"
-        placeholder="Search title"
-        autocomplete="off"
-      />
-    </form>
-  </div>
+    {% if request.path == url_for("library") %}
+    <div class="search-bar">
+        <form action="" method="post" class="search-bar-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" name="search" id="search" placeholder="Search title" autocomplete="off" />
+        </form>
+    </div>
+    {% endif %}
 
-  <div class="profile-section">
-    <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
-    <i class="fa-solid fa-bell" id="notification"></i>
-    <img src="../../static/images/pogi.jpg" alt="User profile" />
-  </div>
+    <div class="profile-section">
+        {% if request.path == url_for("library") %}
+        <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+        {% endif %}
+        <i class="fa-solid fa-bell" id="notification"></i>
+        <img src="{{ image_file }}" alt="User profile" class="user-image"/>
+
+        <div class="pop-over">
+            <ul class="nav-menu settings">
+                <li class="list-item" id="settings">
+                    <i class="fa-solid fa-gear"></i>
+                    <span class="nav-link">Settings</span>
+                </li>
+                <li class="list-item" id="signout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="nav-link">Signout</span>
+                </li>
+            </ul>
+        </div>
+    </div>
 </header>

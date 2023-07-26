@@ -56,10 +56,6 @@
           font-size: 1rem;
         }
 
-        .fa-bookmark {
-          margin-right: 0.5rem;
-        }
-
         .nav-link {
           display: block;
           opacity: 0.8;
@@ -68,10 +64,6 @@
         }
       }
     }
-  }
-
-  .nav-menu.settings {
-    display: none;
   }
 }
 
@@ -117,10 +109,6 @@
             display: inline;
           }
 
-          .fa-bookmark {
-            margin-left: 0.2rem;
-          }
-
           .nav-link {
             display: none;
           }
@@ -152,33 +140,6 @@
           .nav-link {
             display: block !important;
           }
-        }
-      }
-    }
-
-    .nav-menu.settings {
-      margin-top: auto;
-      display: block;
-      padding: 0;
-      margin-bottom: 1rem;
-
-      .nav-list-item {
-        gap: 1rem;
-        display: flex;
-        padding: 1rem 0;
-
-        &:hover i {
-          opacity: 1;
-        }
-
-        &:hover .nav-link {
-          opacity: 1;
-        }
-
-        i,
-        .nav-link {
-          opacity: 0.8;
-          color: var(--clr-text);
         }
       }
     }

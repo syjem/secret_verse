@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+{% block title %} Profile {% endblock %}
+
+{% block main %}
+
+{% include "includes/header.html" %}
+
+<div class="profile-container">
+    {% include 'includes/sidebar.html' %}
+
+    <div class="alert-container block">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            <button type="button" class="btn-close">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="profile-image-container">
+        <img class="profile-image" src="{{ image_file }}">
+    </div>
+    <h4>{{ current_user.username }}</h4>
+
+    <div class="profile-update">
+        <nav class="profile-nav">
+            <ul class="profile-nav-menu">
+                <li class="profile-nav-list-item active">
+                    <i class="fa-regular fa-circle-user"></i>
+                    <a class="profile-nav-link">Profile</a>
+                </li>
+                <li class="profile-nav-list-item">
+                    <i class="fa-solid fa-key"></i>
+                    <a class="profile-nav-link">Password</a>
+                </li>
+            </ul>
+        </nav>
+        <section class="profile-settings">
+            <h3 class="block">Update Profile</h3>
+
+            <!-- Form Here -->
+            <form action="" method="post" enctype="multipart/form-data" class="form-submit-handler">
+                {{ form.hidden_tag() }}
+                <fieldset>
+
+                    <div class="form-group">
+                        {{ form.username.label }}
+
+                        {% if form.username.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                            <em>* {{ error }}</em>
+                            {% endfor %}
+                        </div>
+                        {{ form.username(placeholder="Username", autocomplete="off", class='is-invalid') }}
+                        {% else %}
+                        {{ form.username(placeholder="Username", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.email.label }}
+
+                        {% if form.email.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                            <em>* {{ error }}</em>
+                            {% endfor %}
+                        </div>
+                        {{ form.email(placeholder="Email", autocomplete="off", class='is-invalid') }}
+                        {% else %}
+                        {{ form.email(placeholder="Email", autocomplete="off") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.image.label(class="form-file-label") }}
+                        {{ form.image(class="form-file") }}
+
+                        {% if form.image.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.image.errors %}
+                            <em>* {{ error }}</em>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">{{ form.submit }}</div>
+                </fieldset>
+            </form>
+            <section class="danger-zone">
+                <h3>Danger Zone</h3>
+                <p>Careful, these actions can not be undone.</p>
+
+                <div class="danger-button">
+                    <i class="fa-regular fa-trash-can"></i>
+                    <span>Delete account</span>
+                </div>
+            </section>
+        </section>
+    </div>
+</div>
+{% endblock %}

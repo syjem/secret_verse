@@ -4,6 +4,8 @@
 .article {
   margin-left: 0;
   margin-top: 60px;
+  margin-bottom: 80px;
+  transition: 0.3s ease;
 
   h2 {
     margin-top: 0;
@@ -26,7 +28,7 @@
       .novels-book-cover {
         display: block;
         height: 100%;
-        
+
         img {
           height: 100%;
           box-shadow: 2px 2px 5px var(--clr-accent);
